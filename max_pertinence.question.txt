@@ -1,0 +1,28 @@
+Un prospect parcourt une suite d’offres et on souhaite évaluer quelle peut être la pertinence totale maximale apportée par ces offres à ce prospect.
+
+Un nombre fini d’offres est fourni au prospect. Le fichier offres.txt est donné à titre d’exemple. La première ligne désigne la première offre, la seconde ligne, la second offre et ainsi de suite. Chaque ligne possède une valeur représentant la pertinence de l’offre en question vis à vis du client.
+
+Le prospect commence nécessairement sa navigation à la première offre et la finit à la dernière. Il regarde les offres progressivement, une à une, en suivant leur ordre et sans revenir en arrière. Grâce une barre de navigation, le prospect peut optionnellement décider d’ignorer des offres et de ne pas les regarder. Un maximum de 4 offres peuvent être ainsi ignorées à chaque étape. 
+
+Autrement dit, positionné sur l’offre 1, le prospect peut décider de regarder directement l’offre 2,3,4,5 ou 6. En choisissant de regarder directement l’offre 6, les offres 2,3,4 et 5 seront ignorées. Une fois l’offre 6 regardée, la même question se pose pour l’offre 7,8,9,10 ou 11. Choisir d’aller directement à l’offre 8 signifie que l’offre 7 sera ignorée.
+
+Dans le cadre du fichier exemple, un prospect pourrait regarder toutes les offres, sans en ignorer.
+début (1ère offre) : +1
+2nd offre : +0
+3ième offre : -1
+4ième offre : +3
+5ième offre : -1
+fin (6ième et dernière offre) : -2
+
+Ce qui donne une pertinence totale de 0 : 1 + 0  - 1 + 3 - 1 - 2
+
+Le prospect pourrait aussi décider, arbitrairement, d’ignorer des offres.
+début (1ère offre) : +1
+4ième offre : +3
+fin (dernière offre) : -2
+
+La pertinence totale dans ce scénario est donc 2 : 1 + 3 - 2.
+
+Etant donné une série d’offres associées avec leur pertinence respective, on souhaite trouver quelle est la pertinence totale maximale pouvant être atteinte par un prospect.
+
+Le langage est libre de choix.
