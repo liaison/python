@@ -25,7 +25,10 @@ minibatch_size = d_input_size
 d_learning_rate = 2e-4  # 2e-4
 g_learning_rate = 2e-4
 optim_betas = (0.9, 0.999)
+
+# num_epochs = 30000
 num_epochs = 30000
+
 print_interval = 200
 d_steps = 1  # 'k' steps in the original GAN paper. Can put the discriminator on higher training freq than generator
 g_steps = 1
