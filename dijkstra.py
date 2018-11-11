@@ -26,12 +26,34 @@ class Graph:
         self._edges[key] = distance
 
 
-    def minpath(self, start, end):
+    def minPath(self, start, end):
         """
             Dijkstra algorithm
         """
+        costs = {start:0}
+
+        nodes = self._nodes.copy()
+        path = {}
+
+        next_node = None
+        while nodes:
+            
+            cost_list = [(costs.get(node, float('inf')), node) for node in nodes]
+            min_cost, next_node = min(cost_list, key=lambda x:x[0])
+
+            #print(next_node, nodes)
+
+            for neighbour in self._neighbours[next_node]:
+                weight = self._edges[(next_node, neighbour)]
+                new_cost = weight + costs[next_node]
+                if costs.get(neighbour, float('inf')) > new_cost:
+                    costs[neighbour] = new_cost
+                    path[neighbour] = next_node
+
+            nodes.remove(next_node)
         
-        pass
+        return costs[end],path
+
 
     def print(self):
         print('nodes:', self._nodes)
@@ -45,18 +67,24 @@ if __name__ == "__main__":
    """    2
        1 ---> 2
        1 ---> 3
-          3
+          6
 
-          4
-       2 ---> 3
+          7
+       2 ---> 4
+       3 ---> 4
+          1
    """
    graph.addNodes([1, 2, 3, 4, 5])
    graph.addEdge(1, 2, distance=2)
-   graph.addEdge(1, 3, distance=3)
-   graph.addEdge(2, 3, distance=4)
+   graph.addEdge(1, 3, distance=6)
+   graph.addEdge(2, 4, distance=7)
+   graph.addEdge(3, 4, distance=1)
 
-  
-   graph.print()
+   min_cost, min_path = graph.minPath(1, 4)
+   print("min cost:", min_cost)
+   print("min paths:", min_path)
+
+   #graph.print()
 
         
 
